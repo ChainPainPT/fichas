@@ -1,0 +1,195 @@
+@import "tailwindcss";
+
+@layer base {
+  body {
+    font-family: 'Lexend', 'Andika', system-ui, -apple-system, sans-serif;
+    color: #0f172a;
+    background-color: #f1f5f9;
+  }
+}
+
+/* Fontes Neuroergonómicas (Zorzi et al. / DL 54/2018) */
+.font-lexend {
+  font-family: 'Lexend', system-ui, sans-serif;
+}
+
+.font-andika {
+  font-family: 'Andika', 'Lexend', sans-serif;
+}
+
+.font-atkinson {
+  font-family: 'Atkinson Hyperlegible', 'Lexend', sans-serif;
+}
+
+.font-nunito {
+  font-family: 'Nunito', system-ui, sans-serif;
+}
+
+.font-handwriting {
+  font-family: 'Caveat', cursive, sans-serif;
+}
+
+/* Regra Micro-Tipográfica de Zorzi et al. (Anti-Crowding para Dislexia e PHDA) */
+.zorzi-typography {
+  line-height: 1.6;
+  letter-spacing: 0.05em;
+  word-spacing: 0.15em;
+  text-align: left !important;
+}
+
+/* Algarismos Tabulares Obrigatórios para Matemática */
+.tabular-math {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum" 1;
+}
+
+/* Papel Neuro-acolhedor no Ecrã (parametrizado pela Paleta Neuro-Acolhedora ativa) */
+.a4-sheet {
+  width: 210mm;
+  min-height: 297mm;
+  box-sizing: border-box;
+  background-color: var(--neuro-paper-bg, #FDFBF7);
+  color: var(--neuro-text, #1E293B);
+  /* Margens Oficiais do Manual: Top 13mm, Right 15mm, Bottom 13mm, Left 19mm (Zona de Furação) */
+  padding: 13mm 15mm 13mm 19mm;
+  transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+}
+
+.exercise-card {
+  background-color: var(--neuro-card-bg, #FFFEFC);
+  border-color: var(--neuro-border, #64748B);
+  transition: background-color 0.25s ease, border-color 0.25s ease;
+}
+
+.neuro-surface-box {
+  background-color: var(--neuro-surface-tint, #F4F1EA);
+  border-color: var(--neuro-border, #64748B);
+}
+
+.neuro-badge-accent {
+  background-color: var(--neuro-accent, #2B4C7E);
+  color: #ffffff;
+}
+
+.neuro-accent-text {
+  color: var(--neuro-accent, #2B4C7E);
+}
+
+.neuro-soft-chip {
+  background-color: var(--neuro-accent-soft, #EBF0F7);
+  border-color: var(--neuro-border, #64748B);
+  color: var(--neuro-accent, #2B4C7E);
+}
+
+/* Pauta Caligráfica Tripla Oficial (Céu 28% · Relva 44% · Terra 28%) */
+.pauta-tripla-portuguesa {
+  height: 38px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  border-top: 1.5px solid var(--neuro-border, #475569);
+  border-bottom: 1.5px solid var(--neuro-border, #475569);
+}
+
+.pauta-tripla-ceu {
+  height: 28%;
+  border-bottom: 1.2px dashed var(--neuro-border, #475569);
+  background-color: var(--neuro-card-bg, #ffffff);
+}
+
+.pauta-tripla-relva {
+  height: 44%;
+  background-color: var(--neuro-surface-tint, rgba(21, 128, 61, 0.06));
+  border-bottom: 2px solid #000000; /* Linha de base a preto retinto */
+}
+
+.pauta-tripla-terra {
+  height: 28%;
+  background-color: var(--neuro-card-bg, #ffffff);
+}
+
+/* Quadrícula Matemática de Alto Contraste para Fotocopiadora (5mm ou 7mm) */
+.quadricula-matematica-5mm {
+  background-size: 19px 19px;
+  background-color: var(--neuro-card-bg, #ffffff);
+  background-image:
+    linear-gradient(to right, rgba(71, 85, 105, 0.4) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(71, 85, 105, 0.4) 1px, transparent 1px);
+  font-variant-numeric: tabular-nums;
+}
+
+.quadricula-matematica-7mm {
+  background-size: 26px 26px;
+  background-color: var(--neuro-card-bg, #ffffff);
+  background-image:
+    linear-gradient(to right, rgba(71, 85, 105, 0.45) 1.2px, transparent 1.2px),
+    linear-gradient(to bottom, rgba(71, 85, 105, 0.45) 1.2px, transparent 1.2px);
+  font-variant-numeric: tabular-nums;
+}
+
+/* =========================================================
+   REGRAS DE IMPRESSÃO RÍGIDAS (MANUAL DGE / IAVE / DL 54/2018)
+   ========================================================= */
+@media print {
+  @page {
+    size: A4 portrait;
+    /* Margens assimétricas para furação de dossiê (19mm esquerda, 15mm direita, 13mm sup/inf) */
+    margin: 13mm 15mm 13mm 19mm;
+  }
+
+  html, body {
+    background: #ffffff !important;
+    color: #000000 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 100% !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  .a4-sheet:not(.keep-neuro-tint-print) {
+    background-color: #ffffff !important;
+  }
+
+  .a4-sheet {
+    width: 100% !important;
+    max-width: none !important;
+    min-height: auto !important;
+    box-shadow: none !important;
+    border: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* CRÍTICO: Regra de Ouro Anti-Orfandade (Nenhum exercício ou tabela parte a meio) */
+  .exercise-card,
+  [data-no-break="true"],
+  .worksheet-header,
+  .worksheet-footer,
+  .exercise-avoid-break,
+  .continuation-header {
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+    display: block !important;
+  }
+
+  /* Forçar quebra de página manual quando configurado (ex: Verso / Página 2) */
+  .force-page-break {
+    break-before: page !important;
+    page-break-before: always !important;
+  }
+
+  /* Garantir linhas de escrita visíveis em fotocopiadoras laser P&B */
+  .print-ink-line {
+    border-color: #1e293b !important;
+  }
+
+  * {
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+}

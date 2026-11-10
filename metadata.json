@@ -1,0 +1,6 @@
+{
+  "name": "FichaCriativa 1º Ciclo",
+  "description": "Criador e formatador inteligente de fichas de trabalho e avaliação para o 1º Ciclo do Ensino Básico em Portugal com layout adaptativo e paginação perfeita para impressão.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
