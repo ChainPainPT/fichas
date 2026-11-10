@@ -1,10 +1,10 @@
-import {
+import type {
   Exercise,
   MathCalculationItem,
   MatchingPair,
   VisualDiagramType,
   MultimodalSummary
-} from '../types/worksheet';
+} from '../types/worksheet.ts';
 
 /**
  * Calcula o resumo multimodal dos elementos visuais ricos detetados num documento

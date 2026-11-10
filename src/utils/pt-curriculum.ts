@@ -1,4 +1,4 @@
-import { WorksheetConfig } from '../types/worksheet';
+import type { WorksheetConfig } from '../types/worksheet.ts';
 
 export const STARTER_TEMPLATES: Record<string, WorksheetConfig> = {
   sistemas_corpo_humano_4ano: {
